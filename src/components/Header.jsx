@@ -1,4 +1,4 @@
 import styles from "./header.module.css";
 export default function Header() {
-  return <div className={styles.header}>My ToDo Application</div>;
+  return <div className={styles.header}>ToDo List</div>;
 }

@@ -2,29 +2,30 @@
   background-color: white;
   border-radius: 8px;
   width: 500px;
-  padding: 20px;
   margin: 0 auto;
   margin-top: 50px;
-  box-shadow: 0 4px 6px brown;
+  padding: 20px;
+  box-shadow: 0 4px 6px burlywood;
 }
 
-.todoinput {
+.inputfield {
   width: 100%;
+  display: block;
   border: none;
   color: black;
   font-size: 16px;
 }
 
-.todoinput:focus {
+.inputfield:focus {
   outline: none;
 }
 
-.addButton {
+.button {
   border: none;
   border-radius: 4px;
-  background-color: chocolate;
+  background-color: brown;
+  color: white;
   padding: 12px 20px;
-  color: whitesmoke;
   cursor: pointer;
 }
 

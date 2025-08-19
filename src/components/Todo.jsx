@@ -1,17 +1,36 @@
-import { useState } from "react";
-import TodoItem from "./TodoItem";
+import { useEffect, useState } from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
 import Footer from "./Footer";
 
 export default function Todo() {
-  const [todoList, setTodoList] = useState([]);
-  const completedTodos = todoList.filter((todo) => todo.done).length;
+  const [todos, setTodos] = useState([]);
+  const completedTodos = todos.filter((todo) => todo.done).length;
+
+  useEffect(() => {
+    async function fetchTodos() {
+      try {
+        const res = await fetch("http://localhost:5000/todos");
+        const data = await res.json();
+        setTodos(data);
+      } catch (err) {
+        console.error("Fetching todos failed", err);
+      }
+    }
+
+    fetchTodos();
+  }, []);
+
   return (
-    <>
-      <Form todoList={todoList} setTodoList={setTodoList} />
-      <TodoList todoList={todoList} setTodoList={setTodoList} />
-      <Footer completedTodos={completedTodos} totalTodos={todoList.length} />
-    </>
+    <div>
+      <Form todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} />
+      <Footer completedTodos={completedTodos} totalTodos={todos.length} />
+    </div>
   );
 }
+
+// MERN Stack
+// MongoDB Express React Node
+// APIs
+// Mongoose
